@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrderAPI</name>
+    </assembly>
+    <members>
+        <member name="T:OrderAPI.Controllers.IdentityController">
+            <summary>
+            认证测试
+            </summary>
+        </member>
+        <member name="M:OrderAPI.Controllers.IdentityController.Get">
+            <summary>
+            获取信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:OrderAPI.Controllers.ValuesController">
+            <summary>
+            测试接口
+            </summary>
+        </member>
+        <member name="M:OrderAPI.Controllers.ValuesController.Get">
+            <summary>
+            GET api/values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OrderAPI.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            GET api/values/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OrderAPI.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:OrderAPI.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:OrderAPI.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OrderAPI.Startup">
+            <summary>
+            启动项
+            </summary>
+        </member>
+        <member name="M:OrderAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:OrderAPI.Startup.Configuration">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="M:OrderAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:OrderAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

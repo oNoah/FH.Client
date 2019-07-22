@@ -31,11 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FH.Core\FH.Swagger\FH.Swagger.csproj" />
+    <Folder Include="bin\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\" />
+    <ProjectReference Include="..\FH.Swagger\FH.Swagger.csproj" />
   </ItemGroup>
 
   <ItemGroup>

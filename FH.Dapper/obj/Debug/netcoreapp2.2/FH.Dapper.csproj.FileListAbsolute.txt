@@ -1,0 +1,5 @@
+G:\noah\repository\FH.Client\FH.Dapper\bin\Debug\netcoreapp2.2\FH.Core.dll
+G:\noah\repository\FH.Client\FH.Dapper\obj\Debug\netcoreapp2.2\FH.Dapper.csprojAssemblyReference.cache
+G:\noah\repository\FH.Client\FH.Dapper\obj\Debug\netcoreapp2.2\FH.Dapper.csproj.CoreCompileInputs.cache
+G:\noah\repository\FH.Client\FH.Dapper\obj\Debug\netcoreapp2.2\FH.Dapper.AssemblyInfoInputs.cache
+G:\noah\repository\FH.Client\FH.Dapper\obj\Debug\netcoreapp2.2\FH.Dapper.AssemblyInfo.cs

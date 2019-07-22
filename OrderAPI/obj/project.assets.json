@@ -12334,8 +12334,8 @@
     },
     "FH.Swagger/1.0.0": {
       "type": "project",
-      "path": "../FH.Core/FH.Swagger/FH.Swagger.csproj",
-      "msbuildProject": "../FH.Core/FH.Swagger/FH.Swagger.csproj"
+      "path": "../FH.Swagger/FH.Swagger.csproj",
+      "msbuildProject": "../FH.Swagger/FH.Swagger.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12379,8 +12379,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "G:\\noah\\repository\\FH.Client\\FH.Core\\FH.Swagger\\FH.Swagger.csproj": {
-              "projectPath": "G:\\noah\\repository\\FH.Client\\FH.Core\\FH.Swagger\\FH.Swagger.csproj"
+            "G:\\noah\\repository\\FH.Client\\FH.Swagger\\FH.Swagger.csproj": {
+              "projectPath": "G:\\noah\\repository\\FH.Client\\FH.Swagger\\FH.Swagger.csproj"
             }
           }
         }

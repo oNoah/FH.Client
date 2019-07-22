@@ -21,7 +21,10 @@ namespace OrderAPI
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+
+            var host = CreateWebHostBuilder(args).Build();
+
+            host.Run();
         }
 
         /// <summary>
@@ -29,8 +32,15 @@ namespace OrderAPI
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            //var configuration = new ConfigurationBuilder().SetBasePath(Environment.CurrentDirectory)
+            //                            .AddJsonFile("host.json")
+            //                            .Build();
+
+            return WebHost.CreateDefaultBuilder(args)
+            //.UseConfiguration(configuration)
+            .UseStartup<Startup>();
+        }
     }
 }

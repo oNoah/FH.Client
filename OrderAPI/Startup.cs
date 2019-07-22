@@ -27,6 +27,8 @@ namespace OrderAPI
             Configuration = configuration;
         }
 
+   
+
         /// <summary>
         /// 配置
         /// </summary>
@@ -56,7 +58,8 @@ namespace OrderAPI
             services.AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication( options =>
                 {
-                    options.Authority = Configuration["OAuthClient:Issuer"];
+                    
+                    options.Authority = Environment.GetEnvironmentVariable("OAUTH_ISSUER");
                     options.RequireHttpsMetadata = false;
 
                     options.ApiName = Configuration["OAuthClient:ApiName"];
@@ -65,8 +68,8 @@ namespace OrderAPI
          
 
             // swagger 配置 右键项目属性 生成选项卡中,先选择Out put path,再 选中xml documentation file
-            // 输出路径： bin\netcoreapp2.2\
-            // xml路径：  bin\netcoreapp2.2\OrderAPI.xml
+            // 输出路径： bin\
+            // xml路径：  bin\OrderAPI.xml
             // NuGet添加 Swashbuckle.AspNetCore 
             var xmlPath = Path.Combine(AppContext.BaseDirectory, "OrderAPI.xml");
 
@@ -76,8 +79,8 @@ namespace OrderAPI
                 Version = "Version 1.0",
                 Description = "FH.OrderService",
                 XmlPath = xmlPath,
-                Issuer = Configuration["OAuthClient:Issuer"]
-            });
+                Issuer = Environment.GetEnvironmentVariable("OAUTH_ISSUER")
+        });
 
             // 注册网关
 

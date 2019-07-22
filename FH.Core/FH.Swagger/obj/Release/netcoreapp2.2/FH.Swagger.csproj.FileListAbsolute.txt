@@ -1,0 +1,8 @@
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\bin\Release\netcoreapp2.2\FH.Swagger.deps.json
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\bin\Release\netcoreapp2.2\FH.Swagger.dll
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\bin\Release\netcoreapp2.2\FH.Swagger.pdb
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\obj\Release\netcoreapp2.2\FH.Swagger.csproj.CoreCompileInputs.cache
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\obj\Release\netcoreapp2.2\FH.Swagger.AssemblyInfoInputs.cache
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\obj\Release\netcoreapp2.2\FH.Swagger.AssemblyInfo.cs
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\obj\Release\netcoreapp2.2\FH.Swagger.dll
+G:\noah\repository\FH.Client\FH.Core\FH.Swagger\obj\Release\netcoreapp2.2\FH.Swagger.pdb

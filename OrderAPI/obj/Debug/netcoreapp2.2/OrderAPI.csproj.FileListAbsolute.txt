@@ -32,3 +32,7 @@ G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\FH.Swagger.dll
 G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\FH.Swagger.pdb
 G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\host.json
 G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\Dockerfile
+G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\FH.Core.dll
+G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\FH.Dapper.dll
+G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\FH.Dapper.pdb
+G:\noah\repository\FH.Client\OrderAPI\bin\netcoreapp2.2\FH.Core.pdb

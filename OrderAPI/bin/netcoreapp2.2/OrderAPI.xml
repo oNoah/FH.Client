@@ -20,6 +20,13 @@
             测试接口
             </summary>
         </member>
+        <member name="M:OrderAPI.Controllers.ValuesController.#ctor(FH.Dapper.Repositories.IDapperRepository{OrderAPI.Entity.Order,System.Int32},System.IServiceProvider)">
+            <summary>
+            
+            </summary>
+            <param name="orderRepository"></param>
+            <param name="serviceProvider"></param>
+        </member>
         <member name="M:OrderAPI.Controllers.ValuesController.Get">
             <summary>
             GET api/values
@@ -32,6 +39,31 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:OrderAPI.Entity.Mapper.OrderMapper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:OrderAPI.Entity.Mapper.OrderMapper.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:OrderAPI.Entity.Order">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:OrderAPI.Entity.Order.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:OrderAPI.Entity.Order.Name">
+            <summary>
+            名称
+            </summary>
         </member>
         <member name="T:OrderAPI.Program">
             <summary>

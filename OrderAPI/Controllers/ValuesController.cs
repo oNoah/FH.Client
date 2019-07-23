@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using DapperExtensions;
+using FH.Core.Domain.Entities;
+using FH.Dapper.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using OrderAPI.Entity;
 
 namespace OrderAPI.Controllers
 {
@@ -13,6 +18,22 @@ namespace OrderAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+    
+        private IServiceProvider ServiceProvider;
+        private readonly IDapperRepository<Order, int> _orderRepository;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderRepository"></param>
+        /// <param name="serviceProvider"></param>
+        public ValuesController(
+            IDapperRepository<Order, int> orderRepository,
+            IServiceProvider serviceProvider)
+        {
+                _orderRepository = orderRepository;
+        }
+
         /// <summary>
         /// GET api/values
         /// </summary>
@@ -20,6 +41,19 @@ namespace OrderAPI.Controllers
         [HttpGet("Get")]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var test = _orderRepository.GetAll();
+
+            using (SqlConnection cn = new SqlConnection("Data Source=172.16.88.233;Initial Catalog=Test_Db;User Id=sa;Password=Hy@123456;"))
+            {
+                cn.Open();
+                var predicate = Predicates.Field<Order>(f => f.Id, Operator.Eq, true);
+                IEnumerable<Order> list = cn.GetList<Order>(predicate);
+
+                var pr = Predicates.Field<Order>(x => x.Name, Operator.Like, "2");
+                cn.Close();
+            }
+
+            //var test =  _orderRepository.Single(1);
             return new string[] { "value1", "value2" };
         }
 

@@ -1,0 +1,9 @@
+G:\noah\repository\FH.Client\FH.Core\bin\Debug\netcoreapp2.2\FH.Core.deps.json
+G:\noah\repository\FH.Client\FH.Core\bin\Debug\netcoreapp2.2\FH.Core.dll
+G:\noah\repository\FH.Client\FH.Core\bin\Debug\netcoreapp2.2\FH.Core.pdb
+G:\noah\repository\FH.Client\FH.Core\obj\Debug\netcoreapp2.2\FH.Core.csprojAssemblyReference.cache
+G:\noah\repository\FH.Client\FH.Core\obj\Debug\netcoreapp2.2\FH.Core.csproj.CoreCompileInputs.cache
+G:\noah\repository\FH.Client\FH.Core\obj\Debug\netcoreapp2.2\FH.Core.AssemblyInfoInputs.cache
+G:\noah\repository\FH.Client\FH.Core\obj\Debug\netcoreapp2.2\FH.Core.AssemblyInfo.cs
+G:\noah\repository\FH.Client\FH.Core\obj\Debug\netcoreapp2.2\FH.Core.dll
+G:\noah\repository\FH.Client\FH.Core\obj\Debug\netcoreapp2.2\FH.Core.pdb

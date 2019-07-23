@@ -32,9 +32,11 @@
 
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FH.Dapper\FH.Dapper.csproj" />
     <ProjectReference Include="..\FH.Swagger\FH.Swagger.csproj" />
   </ItemGroup>
 

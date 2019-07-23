@@ -1,0 +1,17 @@
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\FH.Dapper.Test.deps.json
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\FH.Dapper.Test.runtimeconfig.json
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\FH.Dapper.Test.runtimeconfig.dev.json
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\FH.Dapper.Test.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\obj\Debug\netcoreapp2.2\FH.Dapper.Test.csprojAssemblyReference.cache
+G:\noah\repository\FH.Client\FH.Dapper.Test\obj\Debug\netcoreapp2.2\FH.Dapper.Test.csproj.CoreCompileInputs.cache
+G:\noah\repository\FH.Client\FH.Dapper.Test\obj\Debug\netcoreapp2.2\FH.Dapper.Test.AssemblyInfoInputs.cache
+G:\noah\repository\FH.Client\FH.Dapper.Test\obj\Debug\netcoreapp2.2\FH.Dapper.Test.AssemblyInfo.cs
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\FH.Core.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\FH.Dapper.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Hosting.dll
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.xml
+G:\noah\repository\FH.Client\FH.Dapper.Test\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Hosting.xml

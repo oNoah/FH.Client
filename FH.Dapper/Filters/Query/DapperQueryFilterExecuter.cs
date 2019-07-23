@@ -7,9 +7,9 @@ using System.Text;
 
 namespace FH.Dapper.Filters.Query
 {
-    public class NullDapperQueryFilterExecuter : IDapperQueryFilterExecuter
+    public class DapperQueryFilterExecuter : IDapperQueryFilterExecuter
     {
-        public static readonly NullDapperQueryFilterExecuter Instance = new NullDapperQueryFilterExecuter();
+        public static readonly DapperQueryFilterExecuter Instance = new DapperQueryFilterExecuter();
 
         public IPredicate ExecuteFilter<TEntity, TPrimaryKey>(Expression<Func<TEntity, bool>> predicate) where TEntity : class, IEntity<TPrimaryKey>
         {

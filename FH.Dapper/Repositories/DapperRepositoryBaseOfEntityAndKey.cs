@@ -18,35 +18,42 @@ namespace FH.Dapper.Repositories
         where TEntity: class,
         IEntity<TPrimaryKey>
     {
-        public DapperRepositoryBase()
+        public DapperRepositoryBase(SessionServicePriver sessionServicePriver)
         {
-            DapperQueryFilterExecuter = NullDapperQueryFilterExecuter.Instance;
-            DapperActionFilterExecuter = NullDapperActionFilterExecuter.Instance;
+            SessionServicePriver = sessionServicePriver;
+            IDapperQueryFilterExecuter = DapperQueryFilterExecuter.Instance;
+            IDapperActionFilterExecuter = DapperActionFilterExecuter.Instance;
         }
 
+        public SessionServicePriver SessionServicePriver;
+
         /// <summary>
-        /// 查询过滤
+        /// 查询过滤 可扩展添加TenantId 多租户系统
         /// </summary>
-        public IDapperQueryFilterExecuter DapperQueryFilterExecuter { get; set; }
+        public IDapperQueryFilterExecuter IDapperQueryFilterExecuter { get; set; }
 
         /// <summary>
         /// 方法过滤
         /// </summary>
-        public IDapperActionFilterExecuter DapperActionFilterExecuter { get; set; }
+        public IDapperActionFilterExecuter IDapperActionFilterExecuter { get; set; }
 
         /// <summary>
         /// 事务
         /// </summary>
-        public virtual DbTransaction ActiveTransaction
+        public virtual DbTransaction Transaction
         {
             get { return null; }
         }
 
+
+        /// <summary>
+        /// 数据库连接
+        /// </summary>
         public virtual DbConnection Connection
         {
             get
             {
-                return null;
+                return SessionServicePriver.GetConnection();
             }
         }
 
@@ -57,8 +64,8 @@ namespace FH.Dapper.Repositories
 
         public override TEntity Single(Expression<Func<TEntity, bool>> predicate)
         {
-            IPredicate pg = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.GetList<TEntity>(pg).Single();
+            //IPredicate pg = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.GetList<TEntity>(predicate).Single();
         }
 
         public override TEntity FirstOrDefault(TPrimaryKey id)
@@ -68,8 +75,8 @@ namespace FH.Dapper.Repositories
 
         public override TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
-            IPredicate pg = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.GetList<TEntity>(pg, transaction: ActiveTransaction).FirstOrDefault();
+            IPredicate pg = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.GetList<TEntity>(pg, transaction: Transaction).FirstOrDefault();
         }
 
         public override TEntity Get(TPrimaryKey id)
@@ -82,86 +89,92 @@ namespace FH.Dapper.Repositories
 
         public override IEnumerable<TEntity> GetAll()
         {
-            PredicateGroup predicateGroup = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>();
-            return Connection.GetList<TEntity>(predicateGroup, transaction: ActiveTransaction);
+            PredicateGroup predicateGroup = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>();
+            return Connection.GetList<TEntity>(predicateGroup, transaction: Transaction);
         }
 
         public override IEnumerable<TEntity> Query(string query, object parameters = null)
         {
-            return Connection.Query<TEntity>(query, parameters, ActiveTransaction);
+            //return Connection.Query<TEntity>(query, parameters, Transaction);
+            return null;
         }
 
         public override Task<IEnumerable<TEntity>> QueryAsync(string query, object parameters = null)
         {
-            return Connection.QueryAsync<TEntity>(query, parameters, ActiveTransaction);
+            //return Connection.QueryAsync<TEntity>(query, parameters, Transaction);
+            return null;
         }
 
         public override IEnumerable<TAny> Query<TAny>(string query, object parameters = null)
         {
-            return Connection.Query<TAny>(query, parameters, ActiveTransaction);
+            //return Connection.Query<TAny>(query, parameters, Transaction);
+            return null;
         }
 
         public override Task<IEnumerable<TAny>> QueryAsync<TAny>(string query, object parameters = null)
         {
-            return Connection.QueryAsync<TAny>(query, parameters, ActiveTransaction);
+            //return Connection.QueryAsync<TAny>(query, parameters, Transaction);
+            return null;
         }
 
         public override int Execute(string query, object parameters = null)
         {
-            return Connection.Execute(query, parameters, ActiveTransaction);
+            //return Connection.Execute(query, parameters, Transaction);
+            return 1;
         }
 
         public override Task<int> ExecuteAsync(string query, object parameters = null)
         {
-            return Connection.ExecuteAsync(query, parameters, ActiveTransaction);
+            //return Connection.ExecuteAsync(query, parameters, Transaction);
+            return null;
         }
 
         public override IEnumerable<TEntity> GetAllPaged(Expression<Func<TEntity, bool>> predicate, int pageNumber, int itemsPerPage, string sortingProperty, bool ascending = true)
         {
-            IPredicate filteredPredicate = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            IPredicate filteredPredicate = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
 
             return Connection.GetPage<TEntity>(
                 filteredPredicate,
                 new List<ISort> { new Sort { Ascending = ascending, PropertyName = sortingProperty } },
                 pageNumber,
                 itemsPerPage,
-                ActiveTransaction);
+                Transaction);
         }
 
         public override int Count(Expression<Func<TEntity, bool>> predicate)
         {
-            IPredicate filteredPredicate = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.Count<TEntity>(filteredPredicate, ActiveTransaction);
+            IPredicate filteredPredicate = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.Count<TEntity>(filteredPredicate, Transaction);
         }
 
         public override IEnumerable<TEntity> GetSet(Expression<Func<TEntity, bool>> predicate, int firstResult, int maxResults, string sortingProperty, bool ascending = true)
         {
-            IPredicate filteredPredicate = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            IPredicate filteredPredicate = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
             return Connection.GetSet<TEntity>(
                 filteredPredicate,
                 new List<ISort> { new Sort { Ascending = ascending, PropertyName = sortingProperty } },
                 firstResult,
                 maxResults,
-                ActiveTransaction
+                Transaction
             );
         }
 
         public override IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate)
         {
-            IPredicate filteredPredicate = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.GetList<TEntity>(filteredPredicate, transaction: ActiveTransaction);
+            IPredicate filteredPredicate = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.GetList<TEntity>(filteredPredicate, transaction: Transaction);
         }
 
         public override IEnumerable<TEntity> GetAllPaged(Expression<Func<TEntity, bool>> predicate, int pageNumber, int itemsPerPage, bool ascending = true, params Expression<Func<TEntity, object>>[] sortingExpression)
         {
-            IPredicate filteredPredicate = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.GetPage<TEntity>(filteredPredicate, sortingExpression.ToSortable(ascending), pageNumber, itemsPerPage, ActiveTransaction);
+            IPredicate filteredPredicate = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.GetPage<TEntity>(filteredPredicate, sortingExpression.ToSortable(ascending), pageNumber, itemsPerPage, Transaction);
         }
 
         public override IEnumerable<TEntity> GetSet(Expression<Func<TEntity, bool>> predicate, int firstResult, int maxResults, bool ascending = true, params Expression<Func<TEntity, object>>[] sortingExpression)
         {
-            IPredicate filteredPredicate = DapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.GetSet<TEntity>(filteredPredicate, sortingExpression.ToSortable(ascending), firstResult, maxResults, ActiveTransaction);
+            IPredicate filteredPredicate = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.GetSet<TEntity>(filteredPredicate, sortingExpression.ToSortable(ascending), firstResult, maxResults, Transaction);
         }
 
         public override void Insert(TEntity entity)
@@ -172,8 +185,8 @@ namespace FH.Dapper.Repositories
         public override void Update(TEntity entity)
         {
             //EntityChangeEventHelper.TriggerEntityUpdatingEvent(entity);
-            DapperActionFilterExecuter.ExecuteModificationAuditFilter<TEntity, TPrimaryKey>(entity);
-            Connection.Update(entity, ActiveTransaction);
+            IDapperActionFilterExecuter.ExecuteModificationAuditFilter<TEntity, TPrimaryKey>(entity);
+            Connection.Update(entity, Transaction);
             //EntityChangeEventHelper.TriggerEntityUpdatedEventOnUowCompleted(entity);
         }
 
@@ -182,12 +195,12 @@ namespace FH.Dapper.Repositories
             //EntityChangeEventHelper.TriggerEntityDeletingEvent(entity);
             if (entity is ISoftDelete)
             {
-                DapperActionFilterExecuter.ExecuteDeletionAuditFilter<TEntity, TPrimaryKey>(entity);
-                Connection.Update(entity, ActiveTransaction);
+                IDapperActionFilterExecuter.ExecuteDeletionAuditFilter<TEntity, TPrimaryKey>(entity);
+                Connection.Update(entity, Transaction);
             }
             else
             {
-                Connection.Delete(entity, ActiveTransaction);
+                Connection.Delete(entity, Transaction);
             }
             //EntityChangeEventHelper.TriggerEntityDeletedEventOnUowCompleted(entity);
         }
@@ -204,8 +217,8 @@ namespace FH.Dapper.Repositories
         public override TPrimaryKey InsertAndGetId(TEntity entity)
         {
             //EntityChangeEventHelper.TriggerEntityCreatingEvent(entity);
-            DapperActionFilterExecuter.ExecuteCreationAuditFilter<TEntity, TPrimaryKey>(entity);
-            TPrimaryKey primaryKey = Connection.Insert(entity, ActiveTransaction);
+            IDapperActionFilterExecuter.ExecuteCreationAuditFilter<TEntity, TPrimaryKey>(entity);
+            TPrimaryKey primaryKey = Connection.Insert(entity, Transaction);
             //EntityChangeEventHelper.TriggerEntityCreatedEventOnUowCompleted(entity);
             return primaryKey;
         }

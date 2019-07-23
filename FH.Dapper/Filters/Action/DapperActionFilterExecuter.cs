@@ -5,9 +5,9 @@ using System.Text;
 
 namespace FH.Dapper.Filters.Action
 {
-    public class NullDapperActionFilterExecuter : IDapperActionFilterExecuter
+    public class DapperActionFilterExecuter : IDapperActionFilterExecuter
     {
-        public static readonly NullDapperActionFilterExecuter Instance = new NullDapperActionFilterExecuter();
+        public static readonly DapperActionFilterExecuter Instance = new DapperActionFilterExecuter();
 
         public void ExecuteCreationAuditFilter<TEntity, TPrimaryKey>(TEntity entity) where TEntity : class, IEntity<TPrimaryKey>
         {

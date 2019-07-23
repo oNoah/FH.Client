@@ -82,6 +82,11 @@ namespace OrderAPI
                 Issuer = Environment.GetEnvironmentVariable("OAUTH_ISSUER")
         });
 
+            // Dapper ORM
+            // Data Source=|DataDirectory|\document.db;Pooling=true;FailIfMissing=false
+            // Configuration.GetConnectionString("DefaultConnection")
+            services.AddDapper(Configuration.GetConnectionString("DefaultConnection"));
+
             // 注册网关
 
             // 注册事件

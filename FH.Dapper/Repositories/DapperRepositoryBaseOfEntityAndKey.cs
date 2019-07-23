@@ -64,8 +64,9 @@ namespace FH.Dapper.Repositories
 
         public override TEntity Single(Expression<Func<TEntity, bool>> predicate)
         {
-            //IPredicate pg = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
-            return Connection.GetList<TEntity>(predicate).Single();
+          
+            IPredicate pg = IDapperQueryFilterExecuter.ExecuteFilter<TEntity, TPrimaryKey>(predicate);
+            return Connection.GetList<TEntity>(pg).Single();
         }
 
         public override TEntity FirstOrDefault(TPrimaryKey id)

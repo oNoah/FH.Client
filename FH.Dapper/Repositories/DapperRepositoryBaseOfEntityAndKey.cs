@@ -42,7 +42,7 @@ namespace FH.Dapper.Repositories
         /// </summary>
         public virtual DbTransaction Transaction
         {
-            get { return null; }
+            get { return SessionServicePriver.GetTransaction(); }
         }
 
 

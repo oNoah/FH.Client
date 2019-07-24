@@ -17,8 +17,7 @@ namespace FH.Dapper
 
         public DbTransaction GetTransaction()
         {
-            var tran = GetConnection().BeginTransaction();
-            return tran;
+            return DbConnection.BeginTransaction();
         }
 
         private static DbConnection DbConnection = null;
@@ -27,6 +26,9 @@ namespace FH.Dapper
         {
             if (DbConnection == null)
                 DbConnection = ServiceProvider.GetService(typeof(DbConnection)) as DbConnection;
+            // 每次打开新的连接
+            if (DbConnection.State != ConnectionState.Closed)
+                DbConnection.Close();
             if (DbConnection.State == ConnectionState.Closed)
                 DbConnection.Open();
             return DbConnection;

@@ -47,7 +47,7 @@
         </member>
         <member name="M:OrderAPI.Entity.Mapper.OrderMapper.#ctor">
             <summary>
-            
+            Mapper 不是必须配置
             </summary>
         </member>
         <member name="T:OrderAPI.Entity.Order">

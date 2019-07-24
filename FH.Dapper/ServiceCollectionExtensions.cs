@@ -1,6 +1,7 @@
 ﻿using DapperExtensions.Mapper;
 using DapperExtensions.Sql;
 using FH.Dapper;
+using FH.Dapper.Filters.Query;
 using FH.Dapper.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,23 +15,21 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DapperServiceExtensions
     {
-        public static IServiceCollection AddDapper(this IServiceCollection services, string conn)
+        public static IServiceCollection AddDapper(this IServiceCollection services, string connectionString)
         {
-            services.AddSingleton(DbConnectInstance(conn));
+            services.AddSingleton(DbConnectInstance(connectionString));
 
-            DbConnection DbConnectInstance(string connectionString)
+            DbConnection DbConnectInstance(string conn)
             {
-                var connection = new SqlConnection(connectionString);
-                return connection;
+                return new SqlConnection(conn);
             }
             services.AddSingleton<SessionServicePriver>();
+            services.AddSingleton<IDapperQueryFilterExecuter, DapperQueryFilterExecuter>();
             services.AddSingleton(typeof(IDapperRepository<,>), typeof(DapperRepositoryBase<,>));
-            services.AddSingleton(typeof(IDapperRepository<>), typeof(DapperRepositoryBase<,>));
+            services.AddSingleton(typeof(IDapperRepository<>), typeof(DapperRepositoryBase<>));
 
-            DapperExtensions.DapperExtensions.SqlDialect = new SqliteDialect();
-            var ass = Assembly.GetEntryAssembly();
-            
-            DapperExtensions.DapperExtensions.SetMappingAssemblies(new List<Assembly> { ass });
+            //DapperExtensions.DapperExtensions.SqlDialect = new SqliteDialect();
+            //DapperExtensions.DapperExtensions.SetMappingAssemblies(new List<Assembly> { Assembly.GetEntryAssembly() });
             return services;
         }
     }

@@ -8,7 +8,7 @@ namespace OrderAPI.Entity.Mapper
     public class OrderMapper : ClassMapper<Order>
     {
         /// <summary>
-        /// 
+        /// Mapper 不是必须配置，配置后以Mapper内容为准
         /// </summary>
         public OrderMapper()
         {

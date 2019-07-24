@@ -43,6 +43,7 @@ namespace OrderAPI.Controllers
         {
             var test = _orderRepository.GetAll();
 
+            var test2 = _orderRepository.GetAll(x => x.Id == 1);
             using (SqlConnection cn = new SqlConnection("Data Source=172.16.88.233;Initial Catalog=Test_Db;User Id=sa;Password=Hy@123456;"))
             {
                 cn.Open();
